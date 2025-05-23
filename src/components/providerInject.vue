@@ -3,12 +3,12 @@
 </template>
 
 <script setup>
-import { provide } from 'vue'
+import { provide, onMounted } from 'vue'
 import api from '../axios'
-import { buscarProdutos } from './buscarProdutos.js'
+import Produtos from '@/services/Produtos'
 
 provide('api', api)
-provide('buscarProdutos', buscarProdutos)
+provide('Produtos', Produtos)
 </script>
 
 <style lang="scss" scoped></style>

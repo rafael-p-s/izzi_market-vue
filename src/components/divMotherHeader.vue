@@ -1,12 +1,23 @@
 <template>
   <div class="divMotherHeader">
     <div><h1>My_Market</h1></div>
-    <buttonDefault buttonText="Produtos" />
+    <buttonDefault @click="buscarProdutos" buttonText="Produtos" />
   </div>
 </template>
 
 <script setup>
 import buttonDefault from './buttonDefault.vue'
+import { inject } from 'vue'
+import { defineEmits } from 'vue'
+
+const Produtos = inject('Produtos')
+const emit = defineEmits(['produtos-buscados'])
+
+async function buscarProdutos() {
+  const resposta = await Produtos.listar()
+  const produtos = resposta.data
+  emit('produtos-buscados', produtos)
+}
 </script>
 
 <style>
